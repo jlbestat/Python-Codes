@@ -1,0 +1,43 @@
+### Este código inclui pacotes para execução de análise de cluster em Python (Spyder via Anaconda) e inclui códigos para cluster aglomerativo ou hierárquico.
+
+# 1.Importando os pacotes (caso não tenha os pacotes instalados, use o comando abaixo:)
+
+# Digitar o seguinte comando no console: pip install -r requirements.txt (O arquivo está disponobilizado na pasta como txt)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.cluster.hierarchy as sch
+from sklearn.cluster import AgglomerativeClustering
+import scipy.stats as stats
+from sklearn.cluster import KMeans
+import seaborn as sns
+import numpy as np
+
+# 2. Importe seus dados e nomeie como "dados".
+
+#%% 3. Cluster Hierárquico Aglomerativo
+
+# Gerando o dendrograma com distância euclidiana e single linkgage para exemplo:
+
+plt.figure(figsize=(16,8))
+
+dendrogram = sch.dendrogram(sch.linkage(dados, method = 'single', metric = 'euclidean'), labels = list(dados.variavel))
+plt.title('Dendrograma', fontsize=16)
+plt.xlabel('Dados', fontsize=16)
+plt.ylabel('Distância Euclidiana', fontsize=16)
+plt.axhline(y = 4.5, color = 'red', linestyle = '--')
+plt.show()
+# Substituia no código os objetos dados e dados.variavel pelos seus dados de interesse.
+
+# Outras opções para o método de encadeamento ("method"):
+    ## single
+    ## complete
+    ## average
+
+# Outras opções para as distâncias ("metric"):
+    ## euclidean
+    ## sqeuclidean
+    ## cityblock
+    ## chebyshev
+    ## canberra
+    ## correlation
